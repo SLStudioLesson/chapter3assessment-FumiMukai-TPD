@@ -14,7 +14,20 @@ public class App {
             System.out.println("2. JSON");
             System.out.print("Select (1/2): ");
             String choice = reader.readLine();
-            
+
+            if ("1".equals(choice)) {
+                DataHandler dataHandler = new CSVDataHandler();
+                RecipeUI recipeUI = new RecipeUI(dataHandler);
+                recipeUI.displayMenu();
+            } else if ("2".equals(choice)) {
+                DataHandler dataHandler = new JSONDataHandler();
+                RecipeUI recipeUI = new RecipeUI(dataHandler);
+                recipeUI.displayMenu();
+            } else {
+                DataHandler dataHandler = new CSVDataHandler();
+                RecipeUI recipeUI = new RecipeUI(dataHandler);
+                recipeUI.displayMenu();
+            }
 
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
