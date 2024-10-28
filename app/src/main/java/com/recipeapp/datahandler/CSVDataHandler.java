@@ -58,9 +58,17 @@ public class CSVDataHandler implements DataHandler {
         ArrayList<Ingredient> recipeIngredients = recipe.getIngredients();
 
         // 材料名を取得して文字列にする
+        String ingredientsName = "";
+        for (int i = 0; i < recipeIngredients.size(); i++) {
+            ingredientsName += recipeIngredients.get(i).getName();
+            if (i < recipeIngredients.size() - 1) {
+                ingredientsName += ", ";
+            }
+        }
 
         // 書き込む
-        String contentToWrite = recipeName + "," + recipeIngredients;
+        String contentToWrite = recipeName + "," + ingredientsName;
+
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
             writer.write(contentToWrite);
             writer.newLine(); // 改行する
